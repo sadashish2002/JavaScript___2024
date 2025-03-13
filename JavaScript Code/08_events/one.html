@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // onclick provide less features
+//    document.getElementById('owl').onclick = function(){
+//     alert("owl clicked")
+//    }
+
+  // or
+   //attachEvent()
+
+   // or
+
+   //jQuery - ON
+
+   //or
+
+// we should use addeventlistner becuse it will provide many features includding onclick , propagation
+   // there is a default 3rd parameter false either u mention or not it depend on u in addeventlistner
+   
+//    document.getElementById('owl').addEventListener('click',function(){
+//     alert("owl clicked again")
+//    },false)
+
+   // OR
+
+// document.getElementById('owl').addEventListener('click',function(e){
+// console.log(e)
+// })
+  
+  //Event object
+    //type , timestamp , defaultPrevented , target, srcElement , toElement , currentTarget , 
+    // clienX, clientY , screenX,screenY
+    //altkey , ctrlkey,shiftkey , keyCode
+
+          //Event Propagation  
+// - There are two context
+  //1. Event bubbling(false) - by deafault - it means event occur from niche se uppar like here first owl->li->ul will occur
+  //2. Event capturing (true) - u have to put 3rd parameter as "true" in addeventlistender then it will work from uppar se niche
+
+  // Event bubbling - false or by deafault it contain
+
+// document.getElementById('images').addEventListener('click',function(e){
+// console.log("clicked inside the ul")
+// },false)
+
+// document.getElementById('owl').addEventListener('click',function(e){
+//     console.log("owl clicked");
+// },false)
+
+  //Event capturing - true
+
+//   document.getElementById('images').addEventListener('click',function(e){
+// console.log("clicked inside the ul")
+// },true)
+
+// document.getElementById('owl').addEventListener('click',function(e){
+//     console.log("owl clicked");
+// },true)
+
+    // e.stoppropagation() is a method which is use to stop bubbling from going niche se uppar event....
+
+//     document.getElementById('images').addEventListener('click',function(e){
+// console.log("clicked inside the ul")
+// },false)
+
+// document.getElementById('owl').addEventListener('click',function(e){
+//     console.log("owl clicked");
+//     e.stopPropagation(); //stop bubbling from niche se uppar
+// },false)
+
+         //e.preventDefault()  
+  //The preventDefault() method in JavaScript is used to prevent the default action of an event from occurring 
+      
+      
+//     document.getElementById('images').addEventListener('click',function(e){
+// console.log("clicked inside the ul")
+// },false)
+
+// document.getElementById('google').addEventListener('click',function(e){
+//     console.log("google clicked");
+//     e.preventDefault();
+//     e.stopPropagation(); 
+// },false)
+
+//Task 1 : To remove a image if a click event will occur on that
+
+document.querySelector('#images').addEventListener('click',function(e){
+    // console.log(e);
+    //console.log(e.target);//get all detail of each image even click
+  
+    // console.log(e.target.parentNode); //get parent node of each image after click event 
+    
+    //console.log(e.target.tagName); // return tag name <img> or <li>
+   
+        if(e.target.tagName==='IMG'){
+       console.log(e.target.id);
+       let removeIt = e.target.parentNode // return <li>..</li>
+     //removeIt.remove();
+     
+     // OR
+     removeIt.parentNode.removeChild(removeIt)
+    }
+    
+},false)
+
+</script>
+</html>

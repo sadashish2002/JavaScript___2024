@@ -1,0 +1,64 @@
+<!-- How to create Optimise function to add element in <UL> element and edit and remove it-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code |Dom</title>
+</head>
+<body style="background-color: black; color: aliceblue;">
+    <ul class = "language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+
+<script>
+    // traverse tree and add element which is not optimize
+    function addLanguage(langName){
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        //access parent class and attach child( li ) to parent
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("Python")
+    addLanguage("TypeScript")
+
+    // This is Optimized way to add element inside parent class without traversing tree
+
+    function addOptimizeLanguage(langName){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptimizeLanguage("Java")
+    addOptimizeLanguage("Ruby")
+    
+             //EDIT 
+
+    //How to edit 2nd  element
+  const secondLang =  document.querySelector("li:nth-child(2)")
+//   secondLang.innerHTML = "Mojo"
+   // or
+  const newLi = document.createElement('li')
+  newLi.textContent  = "Mojo"
+  secondLang.replaceWith(newLi)
+
+     //Edit - 2nd example
+       //First taking reference where we want to edit
+     const Lang = document.querySelector("li:nth-child(1)")
+        // Lang.outerHTML = '<li>TypeScript</li>'
+              // or
+      // create same element and change value 
+     const listl = document.createElement('li')
+     listl.textContent = "C++"
+     // replace with reference value of elenment
+     Lang.replaceWith(listl)
+
+    // REMOVE  
+
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()   // remove ruby
+
+
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!--//how to create div element and attach to body-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur code</title>
+</head>
+<body style="background-color: black; color: aliceblue;">
+        
+    
+</body>
+ <script>
+    //how to create div element
+
+    const div = document.createElement('div')
+    console.log(div);
+    
+    //add class name in div element
+    div.className = "main"
+    div.id = Math.round(Math.random()*10 +1)
+    div.setAttribute("title","generated title")
+    div.style.backgroundColor = "green"
+    div.style.padding = "12px"
+
+    // div.innerText = "chai aur code"
+    // or
+    const addText = document.createTextNode("chai aur padai")
+    div.appendChild(addText)
+    //upto now nothing will display on page .. we can see in console(by inspect page)
+    // because all activity of div are occuring in memory .. 
+    // to bring all modification on page we need to attach it to page
+     
+    document.body.appendChild(div)
+
+ </script>
+</html>
